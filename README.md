@@ -4,4 +4,4 @@ Basic random quote app demonstrating CSS / HTML / JavaScript. Solution to the "f
 git clone https://github.com/Tom-Schofield/random_quote_machine.git
 firefox index.html
 # Screenshot
-[[https://github.com/Tom-Schofield/repository/random_quote_machine/master/index.png|alt=octocat]]
+![alt text][https://github.com/Tom-Schofield/random_quote_machine/blob/master/index.png]
