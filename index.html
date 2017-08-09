@@ -1,0 +1,58 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="index.css" type="text/css">
+  <script src="jquery-3.2.1.min.js"></script>
+  <script>
+    function tumblrClick(){
+      window.location.replace('https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes,freecodecamp&caption=' + $("#quote-author").text() + '&content=' + $("#quote-text").text() + '&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button');
+    }
+    function twitterClick(){
+     	window.location.replace('https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + $("#quote-text").text() + " - " + $("#quote-author").text());
+    }
+    function getQuote(){
+      var R = Math.random()*255+1;
+      var G = Math.random()*255+1;
+      var B = Math.random()*255+1;
+    	var randomHex = 'rgb(' + R + ',' + G + ',' + B + ')';
+      $("a").css("background-color", randomHex);
+      $("body").css("background-color", randomHex);
+      $.getJSON("http://quotes.stormconsultancy.co.uk/random.json", function(json){
+        var quoteString = json["quote"];
+        var authorString = json["author"];
+        $("#quote-text").text("\"" + quoteString + "\"");
+        $("#quote-author").text(authorString);
+			});
+
+    }
+  </script>
+</head>
+
+<body>
+  <div class="py-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 p-5">
+          <div class="jumbotron" id="rounded-box">
+            <div class="blockquote pi-draggable" draggable="true">
+              <p style="font-size:30px; font-family:Sedgwick Ave;" id="quote-text">"The desire to be rewarded for one's creativity does not justify depriving the world in general of all or part of that creativity."</p>
+              <div class="blockquote-footer" id="quote-author">Richard Stallman</div>
+            </div>
+            <a class="btn btn-primary pi-draggable" href="#" id="twitter-button" onclick="twitterClick()"><i class="fa fa-1x fa-fw text-white fa-twitter" style="font-size: 20px;"></i></a>
+            <a class="btn btn-primary pi-draggable" href="#" id="tumblr-button" onclick="tumblrClick()"><i class="fa fa-1x fa-fw text-white fa-tumblr" style="font-size: 20px;"></i></a>
+            <a class="btn btn-primary pi-draggable pull-right" href="#" id="new-quote-button" draggable="true" onclick="getQuote()">New Quote</a>
+          </div>
+          <p class="pt-3 text-center" style="color:#000000;">© 2017. All Rights Reversed </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+</body>
+
+</html>
